@@ -1,12 +1,14 @@
 <div class="layout">
-
-    <div class= "container">
-        <app-camera-list></app-camera-list>
-    </div>
-    <div class= "container">
-        <app-map></app-map>
-    </div>
-    <div class= "container">
-        <app-camera-events></app-camera-events>
-    </div>
+  <div class="container">
+    <app-camera-list [camerasList]="camerasList | async"></app-camera-list>
+  </div>
+  <div class="container">
+    <app-map
+      [camerasList]="camerasList | async"
+      (eventClicked)="childMapMarkerClicked($event)"
+    ></app-map>
+  </div>
+  <div class="container">
+    <app-camera-events [event]="markerChosen"></app-camera-events>
+  </div>
 </div>
