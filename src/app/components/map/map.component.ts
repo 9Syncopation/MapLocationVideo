@@ -8,11 +8,8 @@ import { ICamera } from 'src/app/models/models';
   styleUrls: ['./map.component.css'],
 })
 export class MapComponent implements OnInit {
-  
-  ngOnInit(): void {
-    
-  }
-  
+  ngOnInit(): void {}
+
   @Input() camerasList: ICamera[] = [];
   latitude = this.camerasList;
   longitude = this.camerasList;
@@ -21,7 +18,6 @@ export class MapComponent implements OnInit {
     console.log(event);
     this.latitude = event.coords.lat;
     this.longitude = event.coords.lng;
-    
   }
   @Output() eventClicked = new EventEmitter<Event>();
   clickedMarker(event: Event): void {
@@ -31,7 +27,7 @@ export class MapComponent implements OnInit {
   //   this.camerasList.push({
   //     latitude: $event.coords.lat,
   //     longitude: $event.coords.lng,
-  //     id: 2,
+  //     id: 123,
   //     country: 'string',
   //     city: 'string',
   //     active: true,

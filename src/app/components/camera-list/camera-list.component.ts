@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ICamera } from 'src/app/models/models';
 
 @Component({
@@ -17,11 +11,6 @@ export class CameraListComponent implements OnInit {
   constructor() {
     console.log(this.camerasList);
   }
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   debugger
-  //   if(changes?.cameraList?.currentValue)
-  //   this.camerasList = [...changes.cameraList.currentValue] as any
-  // }
 
   ngOnInit(): void {}
 
