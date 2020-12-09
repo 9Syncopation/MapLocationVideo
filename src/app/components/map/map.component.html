@@ -1,10 +1,13 @@
-<agm-map [zoom]="2" (mapClick)="onChoseLocation($event)">
-  <agm-marker
-    *ngFor="let camera of camerasList"
-    [latitude]="camera.latitude"
-    [longitude]="camera.longitude"
-    (click)="clickedMarker($event)"
-  >
-    
-  </agm-marker>
+<agm-map [zoom]="2" 
+(mapClick)="onChoseLocation($event)"
+>
+<agm-marker
+*ngFor="let camera of camerasList"
+[latitude]="camera.latitude"
+[longitude]="camera.longitude"
+>
+
+</agm-marker>
 </agm-map>
+
+<!-- (click)="clickedMarker($event)" -->

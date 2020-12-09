@@ -15,19 +15,30 @@ export class MapComponent implements OnInit {
   longitude = this.camerasList;
   constructor() {}
   onChoseLocation(event: any) {
-    console.log(event);
+    console.log('onchosenlocation',event);
     this.latitude = event.coords.lat;
     this.longitude = event.coords.lng;
+    this.camerasList.push({
+      latitude: event.coords.lat,
+      longitude: event.coords.lng,
+      id: this.camerasList.length,
+      country: 'string',
+      city: 'string',
+      active: true,
+
+    });
+    console.log(this.camerasList)
   }
-  @Output() eventClicked = new EventEmitter<Event>();
-  clickedMarker(event: Event): void {
-    this.eventClicked.emit(event);
-  }
+  // @Output() eventClicked = new EventEmitter<Event>();
+  // clickedMarker(event: Event): void {
+  //   this.eventClicked.emit(event);
+  // }
   // mapClicked($event: MouseEvent) {
+  //   console.log(MouseEvent)
   //   this.camerasList.push({
   //     latitude: $event.coords.lat,
   //     longitude: $event.coords.lng,
-  //     id: 123,
+  //     id: this.camerasList.length,
   //     country: 'string',
   //     city: 'string',
   //     active: true,

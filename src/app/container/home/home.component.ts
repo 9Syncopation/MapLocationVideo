@@ -9,11 +9,13 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   camerasList: Observable<any> | undefined;
-  constructor(private httpService: HttpClient, public markerChosen: Event) {}
+  constructor(private httpService: HttpClient,
+    //  public markerChosen: Event
+     ) {}
 
-  childMapMarkerClicked(event: Event) {
-    this.markerChosen = event;
-  }
+  // childMapMarkerClicked(event: Event) {
+  //   this.markerChosen = event;
+  // }
 
   ngOnInit(): void {
     this.camerasList = this.httpService.get(

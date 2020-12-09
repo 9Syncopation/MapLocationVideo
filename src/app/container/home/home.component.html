@@ -3,12 +3,12 @@
     <app-camera-list [camerasList]="camerasList | async"></app-camera-list>
   </div>
   <div class="container">
-    <app-map
-      [camerasList]="camerasList | async"
-      (eventClicked)="childMapMarkerClicked($event)"
-    ></app-map>
+    <app-map [camerasList]="camerasList | async"  ></app-map>
+    </div>
+    <div class="container">
+      <app-camera-events ></app-camera-events>
+    </div>
   </div>
-  <div class="container">
-    <app-camera-events [event]="markerChosen"></app-camera-events>
-  </div>
-</div>
+  
+  <!-- (eventClicked)="childMapMarkerClicked($event)" -->
+<!-- /*/ [event]="markerChosen"/*/ -->

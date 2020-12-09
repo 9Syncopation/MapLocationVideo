@@ -8,5 +8,5 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CameraEventsComponent implements OnInit {
   constructor() {}
   ngOnInit(): void {}
-  @Input() event: any;
+  // @Input() event: any;
 }
