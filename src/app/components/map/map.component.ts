@@ -30,9 +30,10 @@ export class MapComponent implements OnInit {
     console.log(this.camerasList)
   }
   // @Output() eventClicked = new EventEmitter<Event>();
-  // clickedMarker(event: Event): void {
+  clickedMarker(event: any){
+    console.log(event)
   //   this.eventClicked.emit(event);
-  // }
+  }
   // mapClicked($event: MouseEvent) {
   //   console.log(MouseEvent)
   //   this.camerasList.push({
