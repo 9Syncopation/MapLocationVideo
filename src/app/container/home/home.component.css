@@ -1,14 +1,21 @@
-.layout{
+.layout {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     padding: 20px;
 }
-.container{
+
+.container {
     height: 80vh;
     background-color: rgb(221, 230, 208);
+    background-color: #576574;
     border-color: black;
     margin: 5px;
-    flex: 1 1 150px;
+    padding-top: 30px;
+    /* flex: 1 1 150px; */
     text-align: center;
+    box-shadow: 5px 6px 0px #222f3e;
+}
+
+.grow {
+    flex-grow: 1;
+    /* Set the middle element to grow and stretch */
 }
