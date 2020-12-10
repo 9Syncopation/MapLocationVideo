@@ -29,7 +29,7 @@ import {camerasReducer } from './store/reducers/cameras.reducers';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({
-     cameraState: camerasReducer}),
+     }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBhQ6D7rp0T7VlSH89eBcb3mhDemyrZEC8',
     }),
