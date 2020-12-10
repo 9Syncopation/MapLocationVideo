@@ -12,6 +12,8 @@ import { AboutComponent } from './container/about/about.component';
 import { CameraListComponent } from './components/camera-list/camera-list.component';
 import { MapComponent } from './components/map/map.component';
 import { CameraEventsComponent } from './components/camera-events/camera-events.component';
+import { StoreModule } from '@ngrx/store';
+import {camerasReducer } from './store/reducers/cameras.reducers';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { CameraEventsComponent } from './components/camera-events/camera-events.
   imports: [
     BrowserModule,
     AppRoutingModule,
+    StoreModule.forRoot({
+     cameraState: camerasReducer}),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBhQ6D7rp0T7VlSH89eBcb3mhDemyrZEC8',
     }),
