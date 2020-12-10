@@ -1,6 +1,6 @@
-<div>
+<div class="list-container">
     <div *ngFor="let camera of camerasList">
-        <H4 (click)="cameraClicked()">--{{camera.city}},{{camera.country}} </H4>
+        <H4 (click)="cameraClicked()">{{camera.city}} , {{camera.country}} </H4>
     </div>
     
     
