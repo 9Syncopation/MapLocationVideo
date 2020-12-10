@@ -1,5 +1,5 @@
-import {InterfaceCamera}from "./camera.model";
+import {ICameras}from "./camera.model";
 
 export interface AppState{
-    readonly cameraState : Array<InterfaceCamera>;
+    readonly cameraState : Array<ICameras>;
 }

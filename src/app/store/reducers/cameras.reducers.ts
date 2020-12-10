@@ -1,33 +1,67 @@
-import { InterfaceCamera } from '../modelsStore/camera.model';
-import { CameraAction, camerasActionTypes } from '../actions/cameras.actions';
+import { ICameras } from '../modelsStore/camera.model';
+import { CamerasAction, camerasActionTypes } from '../actions/cameras.actions';
+export interface State {
+  cameras: ICameras[];
+  isLoading: boolean;
+  error: string | null;
+}
+export const camerasFeatureKey = 'cameras';
 
-const initialState: Array<InterfaceCamera> = [
-  {
-    id: 9,
-    country: 'China',
-    city: 'Anjiang',
-    longitude: 113.020456,
-    latitude: 28.404102,
-    active: true,
-  },
-  {
-    id: 10,
-    country: 'Indonesia',
-    city: 'Cipaku',
-    longitude: 107.7843483,
-    latitude: -7.0631844,
-    active: true,
-  },
-];
+export const initialState: State = {
+  cameras: [],
+  isLoading: false,
+  error: '',
+};
 
 export function camerasReducer(
-  state: Array<InterfaceCamera> = initialState,
-  action: CameraAction
-) {
+  state = initialState,
+  action: CamerasAction
+): State {
   switch (action.type) {
-    case camerasActionTypes.ADD_CAMERA:
-      return [...state, action.payload];
-    default:
+    case camerasActionTypes.LOAD_CAMERAS_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    }
+    case camerasActionTypes.LOAD_CAMERAS_SUCCESS: {
+      return {
+        cameras: action.payload.cameras,
+        isLoading: false,
+        error: null,
+      };
+    }
+    case camerasActionTypes.LOAD_CAMERAS_FAILURE: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.error,
+      };
+    }
+    case camerasActionTypes.ADD_CAMERA_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    }
+    case camerasActionTypes.ADD_CAMERA_SUCCESS: {
+      return Object.assign({}, state, {
+        employees: state.cameras.filter(({ id }) => id !== action.payload),
+        isLoading: false,
+        error: null,
+      });
+    }
+    case camerasActionTypes.ADD_CAMERA_FAILURE: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.error,
+      };
+    }
+    default: {
       return state;
+    }
   }
 }

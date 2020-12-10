@@ -1,26 +1,50 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {ICamera} from '../../models/models'
+import { Store } from '@ngrx/store';
+import { ICameras } from '../../store/modelsStore/camera.model';
+import {CameraService}from'../../services/camera.service'
 
+import {
+  CamerasStoreActions,
+  CamerasStoreSelectors,
+  CamerasStoreState,
+} from '../../store/index';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  camerasList: Observable<any> | undefined;
-  constructor(private httpService: HttpClient,
-    //  public markerChosen: Event
-     ) {}
-
+  error!: string | null;
+  isLoading$!: Observable<boolean>;
+  cameras$!: Observable<ICameras[]>;
+  //  public markerChosen: Event
+  constructor(private store$: Store<CamerasStoreState.State>) {}
   // childMapMarkerClicked(event: Event) {
   //   this.markerChosen = event;
   // }
 
   ngOnInit(): void {
-    this.camerasList = this.httpService.get(
-      '../../../assets/data/cameras.json'
+    this.cameras$ = this.store$.select(CamerasStoreSelectors.selectCamerasList);
+    this.store$
+      .select(CamerasStoreSelectors.selectCamerasError)
+      .subscribe((data) => {
+        this.error = data;
+      });
+
+    this.isLoading$ = this.store$.select(
+      CamerasStoreSelectors.selectCamerasIsLoading
     );
+    this.store$.dispatch(new CamerasStoreActions.LoadCamerasRequestAction());
+  }
+
+  getEmployees() {
+    this.store$.dispatch(new CamerasStoreActions.LoadCamerasRequestAction());
+
+    this.store$
+      .select(CamerasStoreSelectors.selectCamerasError)
+      .subscribe((data) => {
+        this.error = data;
+      });
   }
 }

@@ -1,4 +1,4 @@
-export interface InterfaceCamera {
+export interface ICameras {
     id: number;
     country: string;
     city: string;
